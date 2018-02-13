@@ -44,11 +44,11 @@ app.get("/waitlist", function (req, res) {
 app.post("/api/new", function(req, res) {
     var newReservation = req.body;
 
-    if (reservation[i]<6) {
-        newReservation.push(reservation);
+    if (reservation.length <6) {
+        reservation.push(newReservation);
     }
     else {
-        newReservation.push(waitList);
+        waitList.push(reservation);
     }
 });
 
