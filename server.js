@@ -69,6 +69,10 @@ app.get("/make", function (req, res) {
 
 app.get("/view", function (req, res) {
     res.sendFile(path.join(__dirname, "view.html"));
+    var allReservations = {};
+    allReservations.reservation = reservation;
+    allReservations.waitList = waitList;
+    res.json(allReservations);
 });
 
 
