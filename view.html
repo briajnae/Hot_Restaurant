@@ -14,12 +14,17 @@
             <p>Current Reservations and Waiting List</p>
             <a href="/make"><button>Make Reservation</button></a>
             <a href="/"><button>Home</button></a>
+            <button id="viewBTN">View Reservation</button>
         </div>
     </div>
     <div class="container">
         <div class="panel panel-primary">
             <div class="panel-heading">Current Reservations</div>
             <div class="panel-body">
+                    <div id="name"></div>
+                    <div id="phoneNumber"> </div>
+                    <div id="email"></div>
+                    <div id="unique"></div>
             </div>
         </div>
     </div>
@@ -27,19 +32,43 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">Waiting List</div>
                 <div class="panel-body">
-                </div>
+                    <div id="nameW"></div>
+                    <div id="phoneNumberW"> </div>
+                    <div id="emailW"></div>
+                    <div id="uniqueW"></div>
             </div>
         </div>
-    <footer>
-        <a href="API"></a>
-        <a href="GitHub"></a>
-        <a href="API"></a>
-    </footer>
+    </div>
     <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        $("#viewBTM").addEventlistener("click", function(){
+                $.get("./reservation" , function(data) {
+                    console.log(data);
+                    if (data) {
+                      $("#name").text(data.name);
+                      $("#phoneNumber").text(data.phoneNumber);
+                      $("#email").text(data.email);
+                      $("#unique").text(data.unique);
+                    }
+                });
+            });
 
+            $("#viewBTN").addEventlistener("click", function(){
+                $.get("./waitlist" , function(data) {
+                    console.log(data);
+                    if (data) {
+                      $("#nameW").text(data.name);
+                      $("#phoneNumberW").text(data.phoneNumber);
+                      $("#emailW").text(data.email);
+                      $("#uniqueW").text(data.unique);
+                    }
+                });
+            });
+
+        </script>
 </body>
 
 </html>
