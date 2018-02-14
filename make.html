@@ -49,10 +49,10 @@
     $("#add-btn").on("click", function(event) {
         event.preventDefault();
         var newReservation = {
-          name: $("#nameR").val().trim(),
-          phoneNumber: $("#phoneNumberR").val().trim(),
-          email: $("#emailR").val().trim(),
-         unique: $("#uniqueR").val().trim()
+        name: $("#nameR").val().trim(),
+        phoneNumber: $("#phoneNumberR").val().trim(),
+        email: $("#emailR").val().trim(),
+        unique: $("#uniqueR").val().trim()
         };
    
         $.post("/api/new", newReservation)
