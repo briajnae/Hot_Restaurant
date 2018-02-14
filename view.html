@@ -44,29 +44,25 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
-        $("#viewBTM").addEventlistener("click", function(){
-                $.get("./reservation" , function(data) {
-                    console.log(data);
-                    if (data) {
-                      $("#name").text(data.name);
-                      $("#phoneNumber").text(data.phoneNumber);
-                      $("#email").text(data.email);
-                      $("#unique").text(data.unique);
-                    }
-                });
-            });
 
-            $("#viewBTN").addEventlistener("click", function(){
-                $.get("./waitlist" , function(data) {
-                    console.log(data);
+                $.get("./reservation" , function(data) {
                     if (data) {
-                      $("#nameW").text(data.name);
-                      $("#phoneNumberW").text(data.phoneNumber);
-                      $("#emailW").text(data.email);
-                      $("#uniqueW").text(data.unique);
+                        var reservation = data.reservation;
+                        var waitlist = data.waitlist;
+                        for (var i = 0; i < reservation.length; i++) {
+                            $("#name").text(reservation[i].name);
+                            $("#phoneNumber").text(reservation[i].phoneNumber);
+                            $("#email").text(reservation[i].email);
+                            $("#unique").text(reservation[i].unique);
+                        }
+                      for (var i = 0; i < reservation.length; i++) {
+                            $("#nameW").text(waitlist[i].name);
+                            $("#phoneNumberW").text(waitlist[i].phoneNumber);
+                            $("#emailW").text(waitlist[i].email);
+                            $("#uniqueW").text(waitlist[i].unique);
                     }
+                }
                 });
-            });
 
         </script>
 </body>
