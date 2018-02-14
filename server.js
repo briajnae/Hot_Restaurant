@@ -43,13 +43,16 @@ app.get("/waitlist", function (req, res) {
 //Create new reservation - takes in JSON input from client 
 app.post("/api/new", function(req, res) {
     var newReservation = req.body;
-
+    var reserved = true;
     if (reservation.length <6) {
         reservation.push(newReservation);
+        res.json(reserved);
     }
     else {
-        waitList.push(reservation);
+        waitList.push(newReservation);
+        res.json(!reserved);
     }
+    res.json(newReservation);
 });
 
 
